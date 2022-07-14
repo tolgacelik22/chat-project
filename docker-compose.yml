@@ -1,7 +1,7 @@
 version: "3"
 services: 
   redis:
-    container_name: chat_redis
+    container_name: redis
     image: redis:5
   nginx:
     restart: always
@@ -11,7 +11,7 @@ services:
     ports:
       - '3050:80'
   node_backend:
-    container_name: chat_node_backend
+    container_name: node_backend
     build: 
       context: ./server
       dockerfile: Dockerfile
@@ -25,7 +25,7 @@ services:
       - /app/node_modules
       - ./server:/app
   client:
-    container_name: chat_client
+    container_name: client
     build:
       dockerfile: Dockerfile
       context: ./client
