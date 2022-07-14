@@ -3,13 +3,19 @@ services:
   redis:
     container_name: redis
     image: redis:5
+    ports:
+      - 6379:6379
+    networks:
+      - app-network
   nginx:
     restart: always
     build:
       dockerfile: Dockerfile
       context: ./nginx
     ports:
-      - '3050:80'
+      - 8818:80
+    networks:
+      - app-network
   node_backend:
     container_name: node_backend
     build: 
@@ -24,6 +30,8 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
+    networks:
+      - app-network
   client:
     container_name: client
     build:
@@ -34,3 +42,8 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
