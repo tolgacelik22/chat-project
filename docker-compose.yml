@@ -1,0 +1,36 @@
+version: "3"
+services: 
+  redis:
+    container_name: chat_redis
+    image: redis:5
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./nginx
+    ports:
+      - '3050:80'
+  node_backend:
+    container_name: chat_node_backend
+    build: 
+      context: ./server
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    environment: 
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - /app/node_modules
+      - ./server:/app
+  client:
+    container_name: chat_client
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    ports:
+      - 8080:80
+    volumes:
+      - /app/node_modules
+      - ./client:/app
