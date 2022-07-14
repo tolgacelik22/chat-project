@@ -10,7 +10,7 @@
     npm start
 
 ## Run commands for client
-    cd src/src
+    cd client/src
     npm install
     npm run serve
     
