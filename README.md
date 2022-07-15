@@ -3,20 +3,20 @@
 ## Clone
     git clone https://github.com/tolgacelik22/chat-project.git
 
-## Run commands for server
-    cd server
-    docker-compose up -d
-    npm install
-    npm start
+## Run for server
+    docker-compose up
 
 ## Run commands for client
-    cd client/src
+    cd client
     npm install
     npm run serve
-    
-## Run with docker
-    docker-compose up
 
 ## Test
     CLIENT: http://localhost:8080/
     SERVER: http://localhost:3000/
+
+### Resources
+    https://socket.io/
+    https://redis.io/
+    https://docs.docker.com/
+    
