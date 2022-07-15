@@ -14,3 +14,9 @@
 ## Test
     CLIENT: http://localhost:8080/
     SERVER: http://localhost:3000/
+
+### Resources
+    https://socket.io/
+    https://redis.io/
+    https://docs.docker.com/
+    
