@@ -1,8 +1,7 @@
 FROM node:16-alpine3.12
-WORKDIR /client/
-COPY . /client/
-
-RUN npm install
+WORKDIR /chatClient/
+COPY . /chatClient/
+RUN cd client/src && npm install && npm run serve
 
 EXPOSE 8080
-CMD ["npm", "run", "serve"]
+# CMD ["npm", "run", "serve"]

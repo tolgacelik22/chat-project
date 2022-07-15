@@ -53,8 +53,6 @@ io.use(async (socket, next) => {
   socket.username = username;
   socket.location = "TR";
   next();
-  
-  
 });
 
 io.on("connection", async (socket) => {
